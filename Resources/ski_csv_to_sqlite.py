@@ -10,7 +10,7 @@ import sqlite3
 filename = 'clean_skiResortNortAmerica.csv'
 
 # Specify the SQLiteDB File we want to create
-con = sqlite3.connect('skiResortNorthAmerica.db') 
+con = sqlite3.connect('skiResortNorthAmerica.sqlite') 
 # Create our SQL Cursor element                              
 cur = con.cursor()
 # Create the Table and Schema
