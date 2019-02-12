@@ -12,15 +12,12 @@ from sqlalchemy import create_engine
 from flask import Flask, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 
-#################################################
-# Flask Setup
-#################################################
 app = Flask(__name__)
 
 #################################################
 # Database Setup
 #################################################
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "sqlite:///Resources/skiResortNA.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "sqlite:///Resources/skiResortNorthAmerica.sqlite"
 db = SQLAlchemy(app)
 
 # reflect an existing database into a new model
@@ -29,7 +26,7 @@ Base = automap_base()
 Base.prepare(db.engine, reflect=True)
 
 # Save references to each table
-skiResorts = Base.classes.clean_skiResortNortAmerica
+skiResorts = Base.classes.skiResorts
 
 # create route that renders index.html template
 @app.route("/")

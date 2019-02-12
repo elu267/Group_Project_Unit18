@@ -27,7 +27,7 @@ for index, row in skiresorts_NA_df.iterrows():
     else:
         address = address = resortName + ", " + stateProvince + ", " + country
     
-    api_key = "AIzaSyAZJjbPeXHFLaso2uAJ7NEJw_mm5iXeAOI"
+    api_key = ""
     api_response = requests.get('https://maps.googleapis.com/maps/api/geocode/json?address={0}&key={1}'.format(address, api_key))
     api_response_dict = api_response.json()
 
