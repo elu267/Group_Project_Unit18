@@ -9,8 +9,8 @@ var skiresorts = new L.LayerGroup();
 
 // Create a map object
 var myMap = L.map("map", {
-  center: [53.2996011,-100.7059685],
-  zoom: 8,
+  center: [48.983237, -110.843913],
+  zoom: 3.5,
   layers: [graymap, skiresorts],
   attribution: "Map data &copy; <a href=\"http://openstreetmap.org\">OpenStreetMap</a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"http://mapbox.com\">Mapbox</a>",
 });
@@ -33,14 +33,14 @@ L.control.layers(baseMaps, overLay, {
   }).addTo(myMap);
 
 // Query variables
-var data = "\SS_Group_Project_Work\skidata.json?";
+var data = "\SS_Group_Project_Work\skiResorts_geojson.json?";
 var coordinates = "Coordinates";
 var resortname = "ResortName";
 var stateprovince = "StateProvince";
 var country = "Country";
 
 // Assemble query
-var skiinfo = data + coordinates + resortname + stateprovence + country;
+var skiinfo = data + coordinates + resortname + stateprovince + country;
 
 // Grab the data with d3
 d3.json(skiinfo, function(response) {
