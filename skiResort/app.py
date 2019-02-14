@@ -17,7 +17,7 @@ app = Flask(__name__)
 #################################################
 # Database Setup
 #################################################
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "sqlite:///Resources/skiResortNorthAmerica.sqlite"
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "sqlite:///Resources/skiResortsNA.sqlite"
 db = SQLAlchemy(app)
 
 # reflect an existing database into a new model
@@ -26,7 +26,7 @@ Base = automap_base()
 Base.prepare(db.engine, reflect=True)
 
 # Save references to each table
-skiResorts = Base.classes.skiResorts
+skiResorts = Base.classes.clean_skiResorts
 
 # create route that renders index.html template
 @app.route("/")
@@ -38,11 +38,11 @@ def index():
 
 @app.route("/api/resorts")
 def resorts():
-    stmt = db.session.query(skiResorts).statement
+    stmt = db.session.query(clean_skiResorts).statement
     df = pd.read_sql_query(stmt, db.session.bind)
 
     print('def resorts')
-    return jsonify(skiResorts)
+    return jsonify(clean_skiResorts)
 
 
 if __name__ == "__main__":
