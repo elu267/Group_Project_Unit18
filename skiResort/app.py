@@ -17,7 +17,9 @@ app = Flask(__name__)
 #################################################
 # Database Setup
 #################################################
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "sqlite:///Resources/skiResortsNA.sqlite"
+#app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "sqlite:///../Resources/skiResortsNA.sqlite"
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///../Resources/clean_skiResortsNA.sqlite"
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 # reflect an existing database into a new model
@@ -35,14 +37,14 @@ def index():
     print("reading the index function")
     return render_template("index.html")
 
-
 @app.route("/api/resorts")
 def resorts():
-    stmt = db.session.query(clean_skiResorts).statement
+    stmt = db.session.query(skiResorts).statement
     df = pd.read_sql_query(stmt, db.session.bind)
 
     print('def resorts')
-    return jsonify(clean_skiResorts)
+    #return jsonify(clean_skiResorts)
+    return jsonify(list(df.columns)[2:])
 
 
 if __name__ == "__main__":
