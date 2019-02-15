@@ -11,7 +11,7 @@ d3.csv('clean_skiResortsNA.csv').then(function(data) {
     const lat = data.map((x) => { return x.Latitude });
     const long = data.map((x) => {return x.Longitude});
     const easy = data.map((x) => {return x.Easy});
-    const state_count = [_.countBy(data.StateProvince, data.StateProvince)];
+    const state_count = [_.countBy(data.StateProvince, data.StateProvince).head(20)];
     const country_count = [_.countyBy(data.Country, data.Country)];
     const altitude = data.map((x) => {return x.Altitude});
     
@@ -107,6 +107,23 @@ d3.csv('clean_skiResortsNA.csv').then(function(data) {
            // colorscale: "Earth"
         // }
     }];
+    var barLayout_1 = {
+         margin: { t: 0 },
+        hovermode: "closest",
+        xaxis: { title: "Number of ski resorts" },
+        yaxis: { title: "State" }
+    };
+    var barData_1 = [{
+        x: state_count[0],
+        y: state_count[1],
+        // text: names,
+        // mode: "markers",
+        // marker: {
+           // size: lat,
+           // color: sizes,
+           // colorscale: "Earth"
+        // }
+    }];
     
     
     Plotly.plot("scatter", bubbleData_1, bubbleLayout_1);
@@ -118,6 +135,35 @@ d3.csv('clean_skiResortsNA.csv').then(function(data) {
             case 0:
                 Plotly.purge("scatter");
                 Plotly.plot("scatter", bubbleData_1, bubbleLayout_1);
+                break;
+            case 1:
+                Plotly.purge("scatter");
+                Plotly.plot("scatter", bubbleData_2, bubbleLayout_2);
+                break;
+            case 2:
+                Plotly.purge("scatter");
+                Plotly.plot("scatter", bubbleData_3, bubbleLayout_3);  
+                break;
+            case 3:
+                Plotly.purge("scatter");
+                Plotly.plot("scatter", bubbleData_4, bubbleLayout_4);
+                break;
+            case 4:
+                Plotly.purge("scatter");
+                Plotly.plot("scatter", bubbleData_5, bubbleLayout_5);
+                break;
+        }
+    })
+    
+     Plotly.plot("bar", barData_1, barLayout_1);
+
+    let button = document.getElementById("toggle_2");
+    let toggle_2 = 1;
+    button.addEventListener("click", () => {
+        switch (++toggle_2 % 5) {
+            case 0:
+                Plotly.purge("bar");
+                Plotly.plot("bar", barData_1, barLayout_1);
                 break;
             case 1:
                 Plotly.purge("scatter");
