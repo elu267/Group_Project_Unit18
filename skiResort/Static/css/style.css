@@ -37,6 +37,6 @@ html {
 }
 
 .jumbotron {
-    background-image: url('../../templates/skier-on-ski-lift-1080x720.jpg');
+    background-image: url('../images/skier-on-ski-lift-1080x720.jpg');
     color: white;
 }
