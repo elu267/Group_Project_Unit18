@@ -115,16 +115,19 @@ d3.csv('clean_skiResortsNA.csv').then(function(data) {
     };
     var barData_1 = [{
         x: state_count[0],
-        y: state_count[1],
-        // text: names,
-        // mode: "markers",
-        // marker: {
-           // size: lat,
-           // color: sizes,
-           // colorscale: "Earth"
-        // }
+        y: state_count[1]
     }];
     
+    var barLayout_2 = {
+         margin: { t: 0 },
+        hovermode: "closest",
+        xaxis: { title: "Number of ski resorts" },
+        yaxis: { title: "Country" }
+    };
+    var barData_2 = [{
+        x: country_count[0],
+        y: country_count[1]
+    }];
     
     Plotly.plot("scatter", bubbleData_1, bubbleLayout_1);
 
@@ -160,26 +163,14 @@ d3.csv('clean_skiResortsNA.csv').then(function(data) {
     let button = document.getElementById("toggle_2");
     let toggle_2 = 1;
     button.addEventListener("click", () => {
-        switch (++toggle_2 % 5) {
+        switch (++toggle_2 % 2) {
             case 0:
                 Plotly.purge("bar");
                 Plotly.plot("bar", barData_1, barLayout_1);
                 break;
             case 1:
-                Plotly.purge("scatter");
-                Plotly.plot("scatter", bubbleData_2, bubbleLayout_2);
-                break;
-            case 2:
-                Plotly.purge("scatter");
-                Plotly.plot("scatter", bubbleData_3, bubbleLayout_3);  
-                break;
-            case 3:
-                Plotly.purge("scatter");
-                Plotly.plot("scatter", bubbleData_4, bubbleLayout_4);
-                break;
-            case 4:
-                Plotly.purge("scatter");
-                Plotly.plot("scatter", bubbleData_5, bubbleLayout_5);
+                Plotly.purge("bar");
+                Plotly.plot("bar", barData_2, barLayout_2);
                 break;
         }
     })
