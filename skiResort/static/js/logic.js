@@ -1,3 +1,5 @@
+var url = '/'
+
 // Define variables for our base layers
 var graymap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?" + "access_token=pk.eyJ1Ijoia3VsaW5pIiwiYSI6ImNpeWN6bjJ0NjAwcGYzMnJzOWdoNXNqbnEifQ.jEzGgLAwQnZCv9rA6UTfxQ");
 
@@ -33,14 +35,14 @@ L.control.layers(baseMaps, overLay, {
 }).addTo(myMap);
 
 // Query variables
-var data = "/Resources/skiResorts_geojson.json";
+var data = "https://raw.githubusercontent.com/elu267/Group_Project_Unit18/master/Resources/skiResorts_geojson.json";
 var coordinates = "Coordinates";
 var resortname = "ResortName";
 var stateprovince = "StateProvince";
 var country = "Country";
 
 // Assemble query
-var skiinfo = data + coordinates + resortname + stateprovince + country;
+var skiinfo = data;
 
 // Grab the data with d3
 d3.json(skiinfo, function(response) {

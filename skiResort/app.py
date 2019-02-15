@@ -38,14 +38,14 @@ def index():
     return render_template("index.html")
 
 @app.route("/api/resorts")
-def resorts():
+def resorts(data):
     stmt = db.session.query(skiResorts).statement
     df = pd.read_sql_query(stmt, db.session.bind)
 
-    print('def resorts')
+    print('in the def resorts function')
     #return jsonify(clean_skiResorts)
     return jsonify(list(df.columns)[2:])
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
