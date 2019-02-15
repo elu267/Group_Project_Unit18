@@ -13,6 +13,7 @@ d3.csv('clean_skiResortsNA.csv').then(function(data) {
     const easy = data.map((x) => {return x.Easy});
     const state_count = [_.countBy(data.StateProvince, data.StateProvince)];
     const country_count = [_.countyBy(data.Country, data.Country)];
+    const altitude = data.map((x) => {return x.Altitude});
     
     // const canada_
     // id vs size
