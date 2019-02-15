@@ -23,7 +23,8 @@ function createFeatures(skiData) {
         // creates the pop up information when a marker is clicked by the user
         onEachFeature: function(feature, layer) {
             layer.bindPopup("<h3>" + feature.properties.ResortName +
-                "</h3><hr><p>" + feature.properties.URL + "</p>");
+            //    "</h3><hr><p>" + feature.properties.URL + "</p>");
+                "</h3> <hr><a href=" + feature.properties.URL + ">" + feature.properties.URL + "</a>");
         }
     });
 
