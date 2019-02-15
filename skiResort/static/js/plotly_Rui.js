@@ -21,7 +21,7 @@ d3.csv('clean_skiResortsNA.csv').then(function(data) {
     var bubbleLayout_1 = {
         margin: { t: 0 },
         hovermode: "closest",
-        xaxis: { title: "ID" },
+        xaxis: { title: "Adult Lift Price" },
         yaxis: { title: "Size" }
     };
     var bubbleData_1 = [{
