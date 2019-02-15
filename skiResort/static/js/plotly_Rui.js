@@ -11,6 +11,8 @@ d3.csv('clean_skiResortsNA.csv').then(function(data) {
     const lat = data.map((x) => { return x.Latitude });
     const long = data.map((x) => {return x.Longitude});
     const easy = data.map((x) => {return x.Easy});
+    const state_count = [_.countBy(data.StateProvince, data.StateProvince)];
+    const country_count = [_.countyBy(data.
     // const canada_
     // id vs size
     // Build a Bubble Chart
