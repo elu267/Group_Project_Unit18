@@ -1,4 +1,4 @@
-d3.csv('clean_skiResortsNA.csv').then(function(data) {
+d3.json('/resorts').then(function(data) {
 
     // x is each object of data
     const ids = data.map((x) => {
