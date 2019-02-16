@@ -37,6 +37,12 @@ def index():
     print("reading the index function")
     return render_template("index.html")
 
+@app.route("/metadata")
+def meta():
+    """Go To Meta data data page"""
+    print("reading the Meta data function")
+    return render_template("Meta.html")
+
 @app.route("/resorts")
 def resorts():
     stmt = db.session.query(skiResorts).statement
