@@ -4,8 +4,8 @@ var margin = { left: 90, top: 90, right: 90, bottom: 90 },
     innerRadius = Math.min(width, height) * .39,
     outerRadius = innerRadius * 1.1;
 
-var names = ["Big Sky", "Park City", "Snowmass", "Vail", "Whistler Blackcomb", "Steamboat", "Breckenridge", "Beaver Creek", "Winter Park", "Fernie", "Lake Louise", "Sun Peaks", "Keystone", "Aspen Highlands", "Powder Mountain", "Killington", "Copper Mountain", "Crested Butte", "Red Mountain", "Sugarloaf", "Easy", "Intermediate", "Difficult"],
-    colors = ["coral", "Cyan", "crimson", "steelblue", "darkslateblue", "gold", "green", "khaki", "darkorange", "mediumvioletred", "orange", "rosybrown", "seagreen", "sienna", "springgreen", "teal", "thistle", "violet", "wheat", "yellowgreen", "royalblue", "powderblue", "steelblue"],
+var names = ["Big Sky", "Park City", "Snowmass", "Vail", "Whistler Blackcomb", "Steamboat", "Breckenridge", "Beaver Creek", "Winter Park", "Fernie", "Lake Louise", "Sun Peaks", "Keystone", "Aspen Highlands", "Powder Mountain", "Killington", "Copper Mountain", "Crested Butte", "Red Mountain", "Sugarloaf", "Easy ", "Intermediate", "Difficult"],
+    colors = ["493829", "816C5B", "A9A18C", "613318", "855723", "B99C6B", "8F3B1B", "D57500", "DBCA69", "404F24", "668D3C", "BDD09F", "4E6172", "83929F", "A3ADB8", "493829", "8F3B1B", "668D3C", "4E6172", "D57500", "65B32E", "006BAC", "1D1D1B"],
     opacityDefault = 0.8;
 
 var matrix = [
@@ -90,6 +90,7 @@ outerArcs.append("path")
     .attr("id", function(d, i) { return "group" + d.index; })
     .attr("d", arc);
 
+
 outerArcs.append("text")
     .attr("x", 6)
     .attr("dx", 60)
@@ -108,45 +109,8 @@ svg.selectAll("path.chord")
     .enter().append("path")
     .attr("class", "chord")
     .style("fill", function(d) { return colors(d.source.index); })
-    .style("opacity", opacityDefault)
+    .style("opacity", opacityDefault * .50)
     .attr("d", path);
-
-
-// ////////////////////////////////////////////////////////////
-// //////// Draw Super Categories - By Faraz Shuja ////////////
-// ////////////////////////////////////////////////////////////
-
-// //define grouping with colors
-// var groups = [
-//     { sIndex: 0, eIndex: 2, title: 'SuperCategory 1', color: '#c69c6d' },
-//     { sIndex: 4, eIndex: 5, title: 'SuperCategory 2', color: '#00a651' }
-// ];
-// var cD = chord(matrix).groups;
-
-// //draw arcs
-// for (var i = 0; i < groups.length; i++) {
-//     var __g = groups[i];
-//     var arc1 = d3.arc()
-//         .innerRadius(innerRadius * 1.11)
-//         .outerRadius(outerRadius * 1.1)
-//         .startAngle(cD[__g.sIndex].startAngle)
-//         .endAngle(cD[__g.eIndex].endAngle)
-
-//     svg.append("path").attr("d", arc1).attr('fill', __g.color).attr('id', 'groupId' + i);
-
-//     // Add a text label.
-//     var text = svg.append("text")
-//         .attr("x", 200)
-//         .attr("dy", 20);
-
-//     text.append("textPath")
-//         .attr("stroke", "#fff")
-//         .attr('fill', '#fff')
-//         .attr("xlink:href", "#groupId" + i)
-//         .text(__g.title);
-// }
-
-
 
 
 ////////////////////////////////////////////////////////////
@@ -183,8 +147,7 @@ function mouseoverChord(d, i) {
 
     //Define and show the tooltip over the mouse location
     $(this).popover({
-        //placement: 'auto top',
-        title: 'test',
+        placement: 'auto top',
         placement: 'right',
         container: 'body',
         animation: false,
@@ -192,11 +155,6 @@ function mouseoverChord(d, i) {
         followMouse: true,
         trigger: 'click',
         html: true,
-        content: function() {
-            return "<p style='font-size: 11px; text-align: center;'><span style='font-weight:900'>" +
-                "</span> text <span style='font-weight:900'>" +
-                "</span> folgt hier <span style='font-weight:900'>" + "</span> movies </p>";
-        }
     });
     $(this).popover('show');
 }

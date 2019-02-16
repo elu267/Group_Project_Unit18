@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
@@ -31,7 +31,7 @@
             </ul>
         </div>
     </nav>
-
+    <br>
     <div class="container">
         <div class="row">
             <div class="col-md-12 jumbotron text-center">
@@ -89,8 +89,8 @@
     <br>
 
     <!-- Footer-->
-    <div id="footer">
-        <p>&copy;2019</p>
+    <div id="footer" class="bg-dark">
+        <p>Group Project: Bill Nash, Scott Stevener, Erica Unterreiner, Rui Wang</p>
     </div>
 
     <!-- D3 JS -->
@@ -107,7 +107,7 @@
 
     <!-- static file references -->
     <script type="text/javascript" src="{{ url_for('static', filename='js/SS_logic_2-16-19.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/chord_v2.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/chord.js') }}"></script>
     <!-- <script type="text/javascript" src="{{ url_for('static', filename='js/plotly_Rui.js') }}"></script> -->
 
 </body>
