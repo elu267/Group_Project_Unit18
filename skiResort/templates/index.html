@@ -41,20 +41,20 @@
         <div class="row">
             <div class="col-xs-12  col-md-6">
                 <div id="scatter">
-                    <script src="../static/js/plotly_Rui.js">
+                    <!-- <script src="../static/js/plotly_Rui.js"> -->
                     <!-- We append a plot here -->
                     </script>
                     <p>checking placement</p>
                 </div>
-                <button id = "toggle_1">NEXT SCATTER PLOT</button>
+                <button id="toggle_1">NEXT SCATTER PLOT</button>
             </div>
             <div class="col-xs-12  col-md-6">
                 <div id="bar">
-                    <script src="../static/js/plotly_Rui.js"></script>
+                    <!-- <script src="../static/js/plotly_Rui.js"></script> -->
                     <!-- We append a second plot here -->
                     <p>checking placement</p>
                 </div>
-                <button id = "toggle_2">NEXT BAR CHART</buttton>          
+                <button id="toggle_2">NEXT BAR CHART</buttton>          
             </div>
         </div>
     </div>
@@ -67,10 +67,18 @@
     <!-- D3 JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.js"></script>
+
+    <!-- Plotly -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
     <!-- Leaflet JS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js" integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q==" crossorigin=""></script>
+    
+    <!-- static file references -->
     <script type="text/javascript" src="{{ url_for('static', filename='js/logic_elu.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/plotly_Rui.js') }}"></script>
 
 </body>

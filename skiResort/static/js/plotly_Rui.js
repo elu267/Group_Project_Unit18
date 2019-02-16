@@ -9,12 +9,12 @@ d3.json('/resorts').then(function(data) {
     const sizes = data.map((x) => { return x.ResortSize });
     const adult_price = data.map((x) => { return x.Adult });
     const lat = data.map((x) => { return x.Latitude });
-    const long = data.map((x) => {return x.Longitude});
-    const easy = data.map((x) => {return x.Easy});
+    const long = data.map((x) => { return x.Longitude });
+    const easy = data.map((x) => { return x.Easy });
     const state_count = [_.countBy(data.StateProvince, data.StateProvince).head(20)];
     const country_count = [_.countyBy(data.Country, data.Country)];
-    const altitude = data.map((x) => {return x.Altitude});
-    
+    const altitude = data.map((x) => { return x.Altitude });
+
     // const canada_
     // id vs size
     // Build a Bubble Chart
@@ -22,7 +22,7 @@ d3.json('/resorts').then(function(data) {
         margin: { t: 0 },
         hovermode: "closest",
         xaxis: { title: "Altitude" },
-        yaxis: { title: "Adult Lift Price"}
+        yaxis: { title: "Adult Lift Price" }
     };
     var bubbleData_1 = [{
         x: altitude,
@@ -89,7 +89,7 @@ d3.json('/resorts').then(function(data) {
             colorscale: "Earth"
         }
     }];
-    
+
     var bubbleLayout_5 = {
         margin: { t: 0 },
         hovermode: "closest",
@@ -102,13 +102,13 @@ d3.json('/resorts').then(function(data) {
         text: names,
         mode: "markers",
         // marker: {
-           // size: lat,
-           // color: sizes,
-           // colorscale: "Earth"
+        // size: lat,
+        // color: sizes,
+        // colorscale: "Earth"
         // }
     }];
     var barLayout_1 = {
-         margin: { t: 0 },
+        margin: { t: 0 },
         hovermode: "closest",
         xaxis: { title: "Number of ski resorts" },
         yaxis: { title: "State" }
@@ -117,9 +117,9 @@ d3.json('/resorts').then(function(data) {
         x: state_count[0],
         y: state_count[1]
     }];
-    
+
     var barLayout_2 = {
-         margin: { t: 0 },
+        margin: { t: 0 },
         hovermode: "closest",
         xaxis: { title: "Number of ski resorts" },
         yaxis: { title: "Country" }
@@ -128,7 +128,7 @@ d3.json('/resorts').then(function(data) {
         x: country_count[0],
         y: country_count[1]
     }];
-    
+
     Plotly.plot("scatter", bubbleData_1, bubbleLayout_1);
 
     let button = document.getElementById("toggle_1");
@@ -145,7 +145,7 @@ d3.json('/resorts').then(function(data) {
                 break;
             case 2:
                 Plotly.purge("scatter");
-                Plotly.plot("scatter", bubbleData_3, bubbleLayout_3);  
+                Plotly.plot("scatter", bubbleData_3, bubbleLayout_3);
                 break;
             case 3:
                 Plotly.purge("scatter");
@@ -157,12 +157,12 @@ d3.json('/resorts').then(function(data) {
                 break;
         }
     })
-    
-     Plotly.plot("bar", barData_1, barLayout_1);
 
-    let button = document.getElementById("toggle_2");
+    Plotly.plot("bar", barData_1, barLayout_1);
+
+    let button2 = document.getElementById("toggle_2");
     let toggle_2 = 1;
-    button.addEventListener("click", () => {
+    button2.addEventListener("click", () => {
         switch (++toggle_2 % 2) {
             case 0:
                 Plotly.purge("bar");
