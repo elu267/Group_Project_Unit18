@@ -43,18 +43,22 @@
                 <div id="scatter">
                     <!-- <script src="../static/js/plotly_Rui.js"> -->
                     <!-- We append a plot here -->
-                    <script src="../static/js/plotly_Rui.js"></script>
-                    <p>checking placement</p>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+                    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+                    <script type="text/javascript" src="{{ url_for('static', filename='js/plotly_Rui.js') }}"></script>
+                    <!-- <p>checking placement</p> -->
                 </div>
                 <button id="toggle_1">NEXT SCATTER PLOT</button>
             </div>
             <div class="col-xs-12  col-md-6">
                 <div id="bar">
-                    <script src="../static/js/plotly_Rui.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+                    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+                    <script type="text/javascript" src="{{ url_for('static', filename='js/plotly_Rui.js') }}"></script>
                     <!-- We append a second plot here -->
-                    <p>checking placement</p>
+                    <!-- <p>checking placement</p> -->
                 </div>
-                <button id="toggle_2">NEXT BAR CHART</buttton>          
+                <button id="toggle_2">NEXT BAR CHART</button>          
             </div>
         </div>
     </div>
