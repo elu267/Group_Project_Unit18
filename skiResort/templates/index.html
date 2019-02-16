@@ -66,7 +66,7 @@
                     <script type="text/javascript" src="{{ url_for('static', filename='js/plotly_Rui.js') }}"></script>
                     <!-- <p>checking placement</p> -->
                 </div>
-                <button id="toggle_1">NEXT SCATTER PLOT</button>
+                <button id="toggle_1">NEXT PLOT</button>
             </div>
             <div class="col-xs-12  col-md-6">
                 <div id="bar">
@@ -75,10 +75,18 @@
                     <!-- We append a second plot here -->
                     <!-- <p>checking placement</p> -->
                 </div>
-                <button id="toggle_2">NEXT BAR CHART</button>
+                <button id="toggle_2">NEXT CHART</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12  col-md-12">
+                <div id="chord">
+                </div>
             </div>
         </div>
     </div>
+    <br>
+    <br>
 
     <!-- Footer-->
     <div id="footer">
@@ -99,7 +107,7 @@
 
     <!-- static file references -->
     <script type="text/javascript" src="{{ url_for('static', filename='js/SS_logic_2-16-19.js') }}"></script>
-    <!-- <script type="text/javascript" src="{{ url_for('static', filename='js/logic_elu.js') }}"></script> -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/chord_v2.js') }}"></script>
     <!-- <script type="text/javascript" src="{{ url_for('static', filename='js/plotly_Rui.js') }}"></script> -->
 
 </body>
