@@ -5,10 +5,10 @@ $(document).ready(function() {
     ////////////////////////////////////////////////////////////////////
 
     // Defines Parameters of SVG //
-    var margin = { top: 20, right: 50, bottom: 50, left: 0 },
+    var margin = { top: 10, right: 10, bottom: 50, left: 0 },
         width = $("#chord").width(),
         height = $("#chord").width(),
-        margin = { top: 40, right: 10, bottom: 20, left: 10 },
+        margin = { top: 10, right: 10, bottom: 20, left: 10 },
         radius = Math.min(width, height) / 2 - 100,
         innerRadius = Math.min(width, height) / 4,
         outerRadius = innerRadius * 1.04;
@@ -53,11 +53,11 @@ $(document).ready(function() {
 
     // Fill Color // 
     var fill = d3.scaleOrdinal()
-        .range(["493829", "816C5B", "A9A18C", "613318", "855723", "B99C6B", "8F3B1B", "D57500", "DBCA69", "404F24", "668D3C", "BDD09F", "4E6172", "83929F", "A3ADB8", "493829", "8F3B1B", "668D3C", "4E6172", "D57500", "65B32E", "006BAC", "1D1D1B"]);
-
+        .range(["#493829", "#816C5B", "#A9A18C", "#613318", "#855723", "#B99C6B", "#8F3B1B", "#D57500", "#DBCA69", "#404F24", "#668D3C", "#BDD09F", "#4E6172", "#83929F", "#A3ADB8", "#493829", "#8F3B1B", "#668D3C", "#4E6172", "#D57500", "#65B32E", "#006BAC", "#1D1D1B"]);
+    // .range(["darkslateblue", "#B99C6B", "green", "khaki", "darkorange", "mediumvioletred", "orange", "rosybrown", "seagreen", "sienna", "springgreen", "teal", "thistle", "violet", "wheat", "yellowgreen", "royalblue", "powderblue", "steelblue", "Lime", "green", "Blue", "black"]);
     // Resort Names//  
     var names = d3.scaleOrdinal()
-        .range(["Big Sky", "Park City", "Snowmass", "Vail", "Whistler Blackcomb", "Steamboat", "Breckenridge", "Beaver Creek", "Winter Park", "Fernie", "Lake Louise", "Sun Peaks", "Keystone", "Aspen Highlands", "Powder Mountain", "Killington", "Copper Mountain", "Crested Butte", "Red Mountain", "Sugarloaf", "", "", ""]);
+        .range(["Big Sky", "Park City", "Snowmass", "Vail", "Whistler Blackcomb", "Steamboat", "Breckenridge", "Beaver Creek", "Winter Park", "Fernie", "Lake Louise", "Sun Peaks", "Keystone", "Aspen Highlands", "Powder Mountain", "Killington", "Copper Mountain", "Crested Butte", "Red Mountain", "Sugarloaf", "Easy", "Intermediate", "Difficult"]);
 
     // Resort skiable distance in km//   
     var acres = d3.scaleOrdinal()
