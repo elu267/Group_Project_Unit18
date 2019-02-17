@@ -1,1 +1,29 @@
+Adult Lift Price vs Altitude
+    the higher the latitude, the more expensive the lift ticket is
+    most expensive adult lift price is in beaver-creek, colorado, USA (latitude: 3488, adult lift price: $189)
+    highest ski mountain is breckenridge, colorado, USA (latitude: 3914, adult lift price: $164)
+    elko-snobowl, nevada, USA has medium altitude with lowest adult lift price
+    
+Adult Lift Price vs Resort Size
+    the larger the resort size, the more expensive the lift ticket is
+    two largest ski resorts are vail, colorado, usa (size: 5, price: $169) and whistler-blackcomb, british columbia, canada (size: 5, price: $139)
+    great-divide, montana, US has the medium size of 3 with the lowest price of $40.
 
+
+Latitude vs Resort Size
+    there is no correlation
+    
+Easy Slope vs Longitude
+    beginners:
+      us midwest: minnesota,USA
+      us west: idaho, USA
+      us esat: maine, USA
+      canada: ontario, Canada
+
+Latitude vs Longitude
+
+
+Number of ski resorts (Canada vs USA)
+    Quebec, Canada has the most ski resorts of 31 in North America
+    Colorado, USA has the most ski resorts of 28 in US
+    
