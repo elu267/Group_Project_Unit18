@@ -6,32 +6,35 @@ d3.json('/resorts').then(function(data) {
     });
     const names = data.map((x) => { return x.ResortName + ", " + x.StateProvince + ", " + x.Country });
     const sizes = data.map((x) => { return x.ResortSize });
-    
+
     const adult_price = data.map((x) => { return x.Adult });
-    const youth_price = data.map((x) => {return x.Youth});
-    const child_price = data.map((x) => {return x.Child});
-    
+    const youth_price = data.map((x) => { return x.Youth });
+    const child_price = data.map((x) => { return x.Child });
+
+    const skiable_dist = data.map((x) => { return x.Easy + x.Intermediate + x.Difficult })
+    const slope_rating = data.map((x) => { return x.SlopeOfferingVariety })
+
     const lat = data.map((x) => { return x.Latitude });
     const long = data.map((x) => { return x.Longitude });
     const easy = data.map((x) => { return x.Easy });
 
-    var state = data.map(x => { return x.StateProvince});
-    var state_counts ={};
-    for(var i = 0; i < state.length; i++){state_counts[state[i]]=1+(state_counts[state[i]] || 0)};
-    var state_counts_output = Object.entries(state_counts).map(([key, value])=>({key,value}));
-    var state_counts_output = state_counts_output.slice(0,15);
-    var state_counts_output_key = state_counts_output.map((x)=>{return x.key});
-    var state_counts_output_value = state_counts_output.map((x)=>{return x.value});
+    var state = data.map(x => { return x.StateProvince });
+    var state_counts = {};
+    for (var i = 0; i < state.length; i++) { state_counts[state[i]] = 1 + (state_counts[state[i]] || 0) };
+    var state_counts_output = Object.entries(state_counts).map(([key, value]) => ({ key, value }));
+    var state_counts_output = state_counts_output.slice(0, 15);
+    var state_counts_output_key = state_counts_output.map((x) => { return x.key });
+    var state_counts_output_value = state_counts_output.map((x) => { return x.value });
 
-    var country = data.map(x => { return x.Country});
-    var country_counts ={};
-    for(var i = 0; i < country.length; i++){country_counts[country[i]]=1+(country_counts[country[i]] || 0)};
-    var country_counts_output = Object.entries(country_counts).map(([key, value])=>({key,value}));
-    var country_counts_output_key = country_counts_output.map((x)=>{return x.key});
-    var country_counts_output_value = country_counts_output.map((x)=>{return x.value});
+    var country = data.map(x => { return x.Country });
+    var country_counts = {};
+    for (var i = 0; i < country.length; i++) { country_counts[country[i]] = 1 + (country_counts[country[i]] || 0) };
+    var country_counts_output = Object.entries(country_counts).map(([key, value]) => ({ key, value }));
+    var country_counts_output_key = country_counts_output.map((x) => { return x.key });
+    var country_counts_output_value = country_counts_output.map((x) => { return x.value });
 
     const altitude = data.map((x) => { return x.Altitude });
-    
+
     // Build a Bubble Chart
     // adult lift price vs altitude
     var bubbleLayout_1 = {
@@ -52,7 +55,7 @@ d3.json('/resorts').then(function(data) {
         }
     }];
 
-    // size vs adult lift price
+    // adult lift price vs resort size
     var bubbleLayout_2 = {
         margin: { t: 0 },
         hovermode: "closest",
@@ -71,74 +74,77 @@ d3.json('/resorts').then(function(data) {
         }
     }];
 
-    // resort size vs latitude
+    // adult lift price vs slope variety rating
     var bubbleLayout_3 = {
         margin: { t: 0 },
         hovermode: "closest",
-        xaxis: { title: "Resort Size" },
-        yaxis: { title: "Latitude" }
+        xaxis: { title: "Slope Offering Rating" },
+        yaxis: { title: "Adult Lift Price" }
     };
     var bubbleData_3 = [{
-        x: sizes,
-        y: lat,
+        x: slope_rating,
+        y: adult_price,
         text: names,
         mode: "markers",
         marker: {
-            size: lat,
-            color: sizes,
+            // size: lat,
+            color: slope_rating,
             colorscale: "Earth"
         }
     }];
 
-    // longitude vs easy slope
+    // adult lift price vs skiable distance
     var bubbleLayout_4 = {
         margin: { t: 0 },
         hovermode: "closest",
-        xaxis: { title: "Longitude" },
-        yaxis: { title: "Easy Slope" }
+        xaxis: { title: "Total Skiing Distance" },
+        yaxis: { title: "Adult Lift Price" }
+
     };
     var bubbleData_4 = [{
-        x: long,
-        y: easy,
+        x: skiable_dist,
+        y: adult_price,
         text: names,
         mode: "markers",
         marker: {
-            size: easy
-            // color: easy,
-            // colorscale: "Earth"
+            color: adult_price,
+            colorscale: "Earth"
         }
     }];
 
-    // longitude vs latitude
+    // skiable distance vs altitude
     var bubbleLayout_5 = {
         margin: { t: 0 },
         hovermode: "closest",
-        xaxis: { title: "Longtitude" },
-        yaxis: { title: "Latitude" }
+        xaxis: { title: "Altitude" },
+        yaxis: { title: "Total Skiing Distance" }
     };
     var bubbleData_5 = [{
-        x: long,
-        y: lat,
+        x: altitude,
+        y: skiable_dist,
         text: names,
         mode: "markers",
-        // marker: {
-        // size: lat,
-        // color: sizes,
-        // colorscale: "Earth"
-        // }
+        marker: {
+            // size: easy,
+            color: altitude,
+            colorscale: "Earth"
+        }
+
     }];
 
     // top 15 ski resorts
     var barLayout_1 = {
         yaxis: { title: "Number of ski resorts" }
     };
-    
+
     var barData_1 = [{
         x: state_counts_output_key,
         y: state_counts_output_value,
         type: "bar",
-        marker: {color: state_counts_output_value,
-        colorscale: "Earth"}
+        marker: {
+            color: state_counts_output_value,
+            colorscale: "Earth"
+        }
     }];
 
 
@@ -150,7 +156,11 @@ d3.json('/resorts').then(function(data) {
     var barData_2 = [{
         x: country_counts_output_key,
         y: country_counts_output_value,
-        type: bar
+        type: "bar",
+        marker: {
+            // color: country_counts_output_key,
+            colorscale: "Earth"
+        }
     }];
 
     Plotly.plot("scatter", bubbleData_5, bubbleLayout_5);
