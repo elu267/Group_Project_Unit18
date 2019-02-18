@@ -32,6 +32,10 @@ L.control.layers(baseMaps, overLay, {
     collapsed: false
 }).addTo(myMap);
 
+// function increases the size of the markers using a multiplier of 3
+function markerSize(size) {
+    return size * 1.5;
+};
 // Query the data with d3
 d3.json("https://raw.githubusercontent.com/elu267/Group_Project_Unit18/master/Resources/skiResorts_geojson.json", function(err, data) {
 
@@ -51,7 +55,7 @@ d3.json("https://raw.githubusercontent.com/elu267/Group_Project_Unit18/master/Re
             opacity: 1,
             fillOpacity: 1,
             color: 'black',
-            radius: 8,
+            radius: markerSize(feature.properties.SlopeOfferingVariety),
             stroke: true,
             weight: .5,
         };
@@ -65,6 +69,7 @@ d3.json("https://raw.githubusercontent.com/elu267/Group_Project_Unit18/master/Re
             style: style,
             onEachFeature: function(feature, layer) {
                 layer.bindPopup("<b>Resort: </b>" + feature.properties.ResortName.replace(/(^([a-zA-Z\p{M}]))|([ -][a-zA-Z\p{M}])/g, function(f) { return f.toUpperCase(); }) +
+                    "<br><b>SlopeOffering: </b>" + feature.properties.SlopeOfferingVariety +
                     "<br><b>Location: </b>" + feature.properties.StateProvince +
                     "<br><b>Altitude: </b>" + feature.properties.Altitude + "m" +
                     "<br><a href=" + feature.properties.URL + " target='_blank'>Visit Website</a>");

@@ -44,3 +44,12 @@ html {
 #footer {
     color: white;
 }
+
+#country {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #fff;
+    width: 150px;
+    padding: 5px;
+}
