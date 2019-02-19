@@ -5,13 +5,13 @@ var satellite = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/satellite-s
     "access_token=pk.eyJ1Ijoia3VsaW5pIiwiYSI6ImNpeWN6bjJ0NjAwcGYzMnJzOWdoNXNqbnEifQ.jEzGgLAwQnZCv9rA6UTfxQ");
 
 // Layers for skiresorts data.
-var skiresorts = new L.LayerGroup();
+var ResortSize = new L.LayerGroup();
 
 // Create a map object
 var myMap = L.map("map", {
     center: [48.996452, -101.362104],
     zoom: 3,
-    layers: [graymap, skiresorts],
+    layers: [graymap, ResortSize],
     attribution: "Map data &copy; <a href=\"http://openstreetmap.org\">OpenStreetMap</a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"http://mapbox.com\">Mapbox</a>",
 });
 
@@ -23,7 +23,7 @@ var baseMaps = {
 
 // Add overlay
 var overLay = {
-    "Ski Resorts": skiresorts,
+    "Resort Size": ResortSize,
 };
 
 // Pass our map layers into our layer control
@@ -33,29 +33,29 @@ L.control.layers(baseMaps, overLay, {
 }).addTo(myMap);
 
 // function increases the size of the markers using a multiplier of 3
-// function markerSize(size) {
-//     return size / 100;
-// };
+function markerSize(size) {
+    return size * 2.5;
+};
 // Query the data with d3
 d3.json("https://raw.githubusercontent.com/elu267/Group_Project_Unit18/master/Resources/skiResorts_geojson.json", function(err, data) {
 
-    function getColor(Altitude) {
-        return Altitude > 3499 ? '#8F3B1B' :
-            Altitude > 2999 ? '#D57500' :
-            Altitude > 1999 ? '#404F24' :
-            Altitude > 999 ? '#668D3C' :
-            Altitude > 499 ? '#DBCA69' :
-            Altitude > 249 ? '#4E6172' :
+    function getColor(ResortSize) {
+        return ResortSize > 5 ? '#8F3B1B' :
+            ResortSize > 4.9 ? '#D57500' :
+            ResortSize > 3.9 ? '#404F24' :
+            ResortSize > 2.9 ? '#668D3C' :
+            ResortSize > 1.9 ? '#DBCA69' :
+            ResortSize > .9 ? '#4E6172' :
             '#816C5B';
     }
 
     function style(feature) {
         return {
-            fillColor: getColor(feature.properties.Altitude),
+            fillColor: getColor(feature.properties.ResortSize),
             opacity: 1,
             fillOpacity: 1,
             color: 'black',
-            radius: 8 /*markerSize(feature.properties.Altitude)*/,
+            radius: markerSize(feature.properties.ResortSize),
             stroke: true,
             weight: .5,
         };
@@ -76,9 +76,9 @@ d3.json("https://raw.githubusercontent.com/elu267/Group_Project_Unit18/master/Re
                     "<br><a href=" + feature.properties.URL + " target='_blank'>Visit Website</a>");
             }
 
-        }).addTo(skiresorts),
+        }).addTo(ResortSize),
 
-        skiresorts.addTo(myMap);
+        ResortSize.addTo(myMap);
     // });
 
     // Create and add Legend to map
@@ -91,7 +91,7 @@ d3.json("https://raw.githubusercontent.com/elu267/Group_Project_Unit18/master/Re
             .DomUtil
             .create("div", "info legend");
 
-        var grades = [0, 249, 499, 999, 1999, 2999, 3499];
+        var grades = [0, 1, 2, 3, 4, 5];
         var colors = [
             "#816C5B",
             "#4E6172",
@@ -102,7 +102,7 @@ d3.json("https://raw.githubusercontent.com/elu267/Group_Project_Unit18/master/Re
             "#8F3B1B"
         ];
 
-        div.innerHTML += '<b>Altitude (meters)</b><br>'
+        div.innerHTML += '<b>Resort Size Rating</b><br>'
 
         for (var i = 0; i < grades.length; i++) {
             div.innerHTML += "<i style='background: " + colors[i] + "'></i> " +
