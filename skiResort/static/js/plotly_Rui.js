@@ -117,7 +117,8 @@ d3.json('/resorts').then(function(data) {
         margin: { t: 0 },
         hovermode: "closest",
         xaxis: { title: "Altitude" },
-        yaxis: { title: "Total Skiing Distance" }
+        yaxis: { title: "Total Skiing Distance" },
+        showlegend: false
     };
     var bubbleData_5 = [{
         x: altitude,
@@ -134,7 +135,8 @@ d3.json('/resorts').then(function(data) {
 
     // top 15 ski resorts
     var barLayout_1 = {
-        yaxis: { title: "Number of ski resorts" }
+        yaxis: { title: "Number of ski resorts" },
+        showlegend: false
     };
 
     var barData_1 = [{
@@ -175,19 +177,19 @@ d3.json('/resorts').then(function(data) {
                 break;
             case 1:
                 Plotly.purge("scatter");
-                Plotly.plot("scatter", bubbleData_2, bubbleLayout_2); // size vs adult lift price
+                Plotly.plot("scatter", bubbleData_2, bubbleLayout_2); // adult lift price vs resort size
                 break;
             case 2:
                 Plotly.purge("scatter");
-                Plotly.plot("scatter", bubbleData_3, bubbleLayout_3); // resort size vs latitude
+                Plotly.plot("scatter", bubbleData_3, bubbleLayout_3); // adult lift price vs slope variety rating
                 break;
             case 3:
                 Plotly.purge("scatter");
-                Plotly.plot("scatter", bubbleData_4, bubbleLayout_4); // longitude vs easy slope
+                Plotly.plot("scatter", bubbleData_4, bubbleLayout_4); // adult lift price vs skiable distance
                 break;
             case 4:
                 Plotly.purge("scatter");
-                Plotly.plot("scatter", bubbleData_5, bubbleLayout_5); // longitude vs latitude
+                Plotly.plot("scatter", bubbleData_5, bubbleLayout_5); // skiable distance vs altitude
                 break;
         }
     })
@@ -200,11 +202,11 @@ d3.json('/resorts').then(function(data) {
         switch (++toggle_2 % 2) {
             case 0:
                 Plotly.purge("bar");
-                Plotly.plot("bar", barData_1, barLayout_1); // top 15 ski resorts
+                Plotly.plot("bar", barData_2, barLayout_2); // number of ski resort Canada vs US
                 break;
             case 1:
                 Plotly.purge("bar");
-                Plotly.plot("bar", barData_2, barLayout_2); // number of ski resort Canada vs US
+                Plotly.plot("bar", barData_1, barLayout_1); // top 15 ski resorts
                 break;
         }
     })
