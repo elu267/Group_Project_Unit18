@@ -45,12 +45,8 @@
                     <p>There are several factors that may be important to a given person when choosing the ultimate ski resort destination. Some factors include slope offerings (variety), total skiing distance, price, and location. This interactive dashboard
                         allows you to compare various ski resorts located in North America. </p>
 
-                    <p>Using the map, you can see the location and variations in altitude for a given location within North America. Additionally, the size of the marker is determined based on the slope offering rating.</p>
-
-                    <p>You may use the interactive scatter plots to see the relationship of adult lift price compared to altitude, resort size, slope variety and total available skiing distance. The bar charts give a general sense of the data in our population
-                        from number of locations per country to the top 15 areas in terms of number of resorts.</p>
-
-                    <p>Alternatively, we’ve compiled a comparison of the top twenty resorts (in terms of total skiing distance) and slope offering variety (easy, intermediate and difficult slopes). The size of the band is based on the number of trails offered.</p>
+                    <p>The map provides the location and the size of the resorts. The interactive scatter plots allow you to explore the relationship between various factors. Additionally, we’ve compiled a comparison of the top twenty resorts (in terms of
+                        total skiing distance) and slope offering variety (easy, intermediate and difficult slopes).</p>
                 </div>
             </div>
             <div class="col-xs-12  col-md-7">
@@ -84,7 +80,7 @@
         <br>
         <div class="row">
             <div class="col-xs-12  col-md-8">
-                <h4>Slope Variety for Top 20 Resorts'</h4>
+                <h4>Slope Variety for Top 20 Resorts</h4>
                 <h5>(Most Skiing Distrance Offered)</h5>
                 <div id="chord">
                 </div>
@@ -112,7 +108,7 @@
     <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js" integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q==" crossorigin=""></script>
 
     <!-- static file references -->
-    <script type="text/javascript" src="{{ url_for('static', filename='js/logic.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/logicRS.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/chord.js') }}"></script>
     <!-- <script type="text/javascript" src="{{ url_for('static', filename='js/plotly_Rui.js') }}"></script> -->
 
