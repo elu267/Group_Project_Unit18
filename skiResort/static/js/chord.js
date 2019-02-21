@@ -158,7 +158,7 @@ $(document).ready(function() {
         .text(function(d) { return names(d.index); })
         .attr("class", "text1");
 
-    // Adds Acres Labels //
+    // Adds distance (km) Labels //
     svg.append("g").selectAll("acres_labels")
         .data(chord.groups)
         .enter()
